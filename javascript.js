@@ -12,13 +12,20 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 var trainName = "";
-var	destination = "";
-var	frequency = "";
-var nextArrival	= "";
+var destination = "";
+var frequency = "";
+var nextArrival = "";
 
-$("#addTrain").on("click", function(){
+$("#addTrain").on("click", function () {
     trainName = $("#trainNameInput").val().trim();
     destination = $("#destinationInput").val().trim();
     frequency = $("#frequencyInput").val().trim();
     nextArrival = $("#nextArrivalInput").val().trim();
+
+    firebase.database().ref().set({
+        trainName: trainName,
+        destination: destination,
+        frequency: frequency,
+        nextArrival: nextArrival
+    })
 })
